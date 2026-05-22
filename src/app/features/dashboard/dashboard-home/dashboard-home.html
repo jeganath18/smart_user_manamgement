@@ -1,1 +1,586 @@
-<p>dashboard-home works!</p>
+<div class="pt-6 min-h-screen bg-black text-white mb-10">
+<nav
+  class="flex justify-between items-center bg-neutral-900 border border-neutral-800 mx-4 px-4 md:px-6 py-4 rounded-3xl text-white relative overflow-hidden"
+>
+  <!-- LEFT SECTION -->
+  <div class="flex items-center gap-4 md:gap-6">
+    
+    <!-- LOGO -->
+    <div class="flex items-center gap-3">
+      <div
+        class="w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg"
+      >
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="4.706" cy="16" r="4.706" fill="#D9D9D9" />
+                <circle cx="16.001" cy="4.706" r="4.706" fill="#D9D9D9" />
+                <circle cx="16.001" cy="27.294" r="4.706" fill="#D9D9D9" />
+                <circle cx="27.294" cy="16" r="4.706" fill="#D9D9D9" />
+            </svg>
+      </div>
+
+      <!-- WELCOME TEXT -->
+      <div class="flex flex-col">
+        <h1
+          class="text-lg md:text-2xl font-black tracking-wide bg-white bg-clip-text text-transparent"
+          style="font-family: cursive;"
+        >
+          Welcome back!
+        </h1>
+
+        <p class="text-xs md:text-sm text-slate-400">
+          Start managing the users
+        </p>
+      </div>
+    </div>
+
+    <!-- NAV LINKS -->
+    <div class="hidden md:flex items-center gap-6 ml-8">
+      <a href="#" class="relative overflow-hidden h-6 group">
+        <span
+          class="block group-hover:-translate-y-full transition-transform duration-300"
+        >
+          Stories
+        </span>
+
+        <span
+          class="block absolute top-full left-0 group-hover:-translate-y-full transition-transform duration-300"
+        >
+          Stories
+        </span>
+      </a>
+
+      <a href="#" class="relative overflow-hidden h-6 group">
+        <span
+          class="block group-hover:-translate-y-full transition-transform duration-300"
+        >
+          Pricing
+        </span>
+
+        <span
+          class="block absolute top-full left-0 group-hover:-translate-y-full transition-transform duration-300"
+        >
+          Pricing
+        </span>
+      </a>
+
+      <a href="#" class="relative overflow-hidden h-6 group">
+        <span
+          class="block group-hover:-translate-y-full transition-transform duration-300"
+        >
+          Docs
+        </span>
+
+        <span
+          class="block absolute top-full left-0 group-hover:-translate-y-full transition-transform duration-300"
+        >
+          Docs
+        </span>
+      </a>
+    </div>
+  </div>
+
+  <!-- RIGHT SECTION -->
+  <div class="hidden md:flex items-center gap-4">
+    
+    <!-- USER PROFILE -->
+    <div
+      class="flex items-center gap-3 bg-black border border-neutral-700 hover:border-slate-600 px-3 py-2 rounded-full transition cursor-pointer"
+    >
+      <!-- AVATAR -->
+      <div
+        class="w-11 h-11 rounded-full bg-white flex items-center justify-center text-black font-bold shadow-lg shadow-blue-500/20"
+      >
+        J
+      </div>
+
+      <!-- USER INFO -->
+      <div class="hidden lg:block">
+        <h2 class="text-sm font-semibold text-white">
+          Jegan
+        </h2>
+
+        <div class="flex items-center gap-2">
+          <p class="text-xs text-slate-400">
+            Administrator
+          </p>
+
+          <span
+            class="w-2 h-2 rounded-full bg-green-400 animate-pulse"
+          ></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MOBILE MENU BUTTON -->
+  <button id="menuToggle" class="md:hidden text-white">
+    <svg
+      class="w-7 h-7"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path d="M4 6h16M4 12h16M4 18h16" />
+    </svg>
+  </button>
+
+  <!-- MOBILE MENU -->
+  <div
+    id="mobileMenu"
+    class="absolute hidden top-24 left-0 w-full bg-black border-t border-neutral-800 flex-col items-center gap-5 py-6 text-base z-50 rounded-b-3xl"
+  >
+    <a class="hover:text-indigo-400 transition" href="#">
+      Stories
+    </a>
+
+    <a class="hover:text-indigo-400 transition" href="#">
+      Pricing
+    </a>
+
+    <a class="hover:text-indigo-400 transition" href="#">
+      Docs
+    </a>
+
+    <button
+      class="border border-slate-600 hover:bg-slate-800 px-5 py-2 rounded-full text-sm font-medium transition"
+    >
+      Contact
+    </button>
+
+    <button
+      class="bg-white text-black px-5 py-2 rounded-full text-sm font-medium hover:bg-slate-100 transition duration-300 shadow-[0px_0px_30px_7px] shadow-white/30"
+    >
+      Get Started
+    </button>
+  </div>
+</nav>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 w-full mt-8 px-4">
+
+    <!-- CARD 1 -->
+    <div
+        class="bg-zinc-950 border border-zinc-800 rounded-2xl p-5 hover:border-zinc-600 transition duration-300 group shadow-[0px_0px_40px_rgba(255,255,255,0.03)]">
+
+        <div
+            class="w-14 h-14 rounded-2xl border border-zinc-700 flex items-center justify-center bg-zinc-900 group-hover:bg-white transition duration-300">
+
+            <svg
+                class="w-7 h-7 stroke-white group-hover:stroke-black transition duration-300"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.7"
+                stroke="white">
+
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07" />
+
+            </svg>
+
+        </div>
+
+        <h2 class="text-2xl font-black text-white mt-8">
+            2,680+
+        </h2>
+
+        <p class="mt-3 text-zinc-400 text-sm">
+            Active Users Connected Securely
+        </p>
+
+    </div>
+
+    <!-- CARD 2 -->
+    <div
+        class="bg-zinc-950 border border-zinc-800 rounded-[28px] p-5 hover:border-zinc-600 transition duration-300 group shadow-[0px_0px_40px_rgba(255,255,255,0.03)]">
+
+        <div
+            class="w-14 h-14 rounded-2xl border border-zinc-700 flex items-center justify-center bg-zinc-900 group-hover:bg-white transition duration-300">
+
+            <svg
+                class="w-7 h-7 stroke-white group-hover:stroke-black transition duration-300"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.7"
+                stroke="currentColor">
+
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M9.75 17L3 10.25l1.5-1.5L9.75 14 19.5 4.25 21 5.75 9.75 17z" />
+
+            </svg>
+
+        </div>
+
+        <h2 class="text-2xl font-black text-white mt-8">
+            99.9%
+        </h2>
+
+        <p class="mt-3 text-zinc-400 text-sm">
+            Secure Authentication Success Rate
+        </p>
+
+    </div>
+
+    <!-- CARD 3 -->
+    <div
+        class="bg-zinc-950 border border-zinc-800 rounded-[28px] p-5 hover:border-zinc-600 transition duration-300 group shadow-[0px_0px_40px_rgba(255,255,255,0.03)]">
+
+        <div
+            class="w-14 h-14 rounded-2xl border border-zinc-700 flex items-center justify-center bg-zinc-900 group-hover:bg-white transition duration-300">
+
+            <svg
+                class="w-7 h-7 stroke-white group-hover:stroke-black transition duration-300"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.7"
+                stroke="currentColor">
+
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 6v6l4 2" />
+
+                <circle cx="12" cy="12" r="9"></circle>
+
+            </svg>
+
+        </div>
+
+        <h2 class="text-2xl font-black text-white mt-8">
+            24/7
+        </h2>
+
+        <p class="mt-3 text-zinc-400 text-sm">
+            Real-Time Monitoring & Access Logs
+        </p>
+
+    </div>
+
+    <!-- CARD 4 -->
+    <div
+        class="bg-zinc-950 border border-zinc-800 rounded-[28px] p-5 hover:border-zinc-600 transition duration-300 group shadow-[0px_0px_40px_rgba(255,255,255,0.03)]">
+
+        <div
+            class="w-14 h-14 rounded-2xl border border-zinc-700 flex items-center justify-center bg-zinc-900 group-hover:bg-white transition duration-300">
+
+            <svg
+                class="w-7 h-7 stroke-white group-hover:stroke-black transition duration-300"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.7"
+                stroke="currentColor">
+
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 11c0-3.314 2.686-6 6-6m0 0v4m0-4h-4M12 13c0 3.314-2.686 6-6 6m0 0v-4m0 4h4" />
+
+            </svg>
+
+        </div>
+
+        <h2 class="text-2xl font-black text-white mt-8">
+            150+
+        </h2>
+
+        <p class="mt-3 text-zinc-400 text-sm">
+            API Requests Processed Per Minute
+        </p>
+
+    </div>
+
+</div>
+
+<div class="mx-4 mt-8 bg-neutral-900 rounded-3xl border border-neutral-800 overflow-hidden">
+ 
+  <!-- Header -->
+  <div class="px-6 pt-6 pb-5 border-b border-neutral-800">
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+      <div>
+        <h2 class="text-white text-lg font-medium">Members list</h2>
+        <p class="text-neutral-500 text-sm mt-1">See information about all members</p>
+      </div>
+      <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+        <!-- Search -->
+        <div class="relative">
+          <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-500 pointer-events-none" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/>
+          </svg>
+          <input id="searchInput" type="text" placeholder="Search members…" oninput="filterTable()"
+            class="w-full sm:w-56 bg-neutral-800 border border-neutral-700 rounded-lg text-neutral-200 text-sm placeholder-neutral-500 pl-9 pr-3 py-2 outline-none focus:border-neutral-500 transition-colors"/>
+        </div>
+        <!-- View All -->
+        <!-- <button onclick="showAll()"
+          class="border border-neutral-700 rounded-lg text-neutral-300 text-xs font-medium tracking-wide uppercase px-4 py-2 hover:border-neutral-500 hover:text-white transition-colors whitespace-nowrap">
+          View all
+        </button> -->
+        <!-- Add Member -->
+        <button
+          class="flex items-center justify-center gap-2 bg-white text-neutral-900 text-xs font-medium tracking-wide uppercase rounded-lg px-4 py-2 hover:bg-neutral-100 transition-colors whitespace-nowrap">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M6.25 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM3.25 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM19.75 7.5a.75.75 0 00-1.5 0v2.25H16a.75.75 0 000 1.5h2.25v2.25a.75.75 0 001.5 0v-2.25H22a.75.75 0 000-1.5h-2.25V7.5z"/>
+          </svg>
+          Add member
+        </button>
+      </div>
+    </div>
+  </div>
+ 
+  <!-- Table -->
+  <div class="overflow-x-auto">
+<table class="w-full min-w-[560px]">
+
+  <thead>
+    <tr class="bg-neutral-800/60 border-b border-neutral-800">
+
+      <th class="text-left text-[11px] font-medium text-neutral-500 uppercase tracking-widest px-6 py-3">
+        Member
+      </th>
+
+      <th class="text-left text-[11px] font-medium text-neutral-500 uppercase tracking-widest px-4 py-3">
+        Function
+      </th>
+
+      <th class="text-left text-[11px] font-medium text-neutral-500 uppercase tracking-widest px-4 py-3">
+        Status
+      </th>
+
+      <th class="text-left text-[11px] font-medium text-neutral-500 uppercase tracking-widest px-4 py-3">
+        Employed
+      </th>
+
+      <th class="px-4 py-3"></th>
+
+    </tr>
+  </thead>
+
+  <tbody>
+
+    <tr
+      *ngFor="let member of members"
+      class="border-b border-neutral-800/60 hover:bg-neutral-800/30 transition-colors"
+    >
+
+      <td class="px-6 py-4">
+
+        <div class="flex items-center gap-3">
+
+          <img
+            [src]="member.img"
+            [alt]="member.name"
+            class="w-9 h-9 rounded-full object-cover border border-neutral-700"
+          />
+
+          <div>
+
+            <p class="text-sm font-medium text-neutral-200">
+              {{ member.name }}
+            </p>
+
+            <p class="text-xs text-neutral-500">
+              {{ member.email }}
+            </p>
+
+          </div>
+
+        </div>
+
+      </td>
+
+      <td class="px-4 py-4">
+
+        <p class="text-sm font-medium text-neutral-300">
+          {{ member.role }}
+        </p>
+
+        <p class="text-xs text-neutral-500">
+          {{ member.dept }}
+        </p>
+
+      </td>
+
+      <td class="px-4 py-4">
+
+        <span
+          *ngIf="member.status === 'online'"
+          class="text-green-400"
+        >
+          Online
+        </span>
+
+        <span
+          *ngIf="member.status === 'offline'"
+          class="text-red-400"
+        >
+          Offline
+        </span>
+
+      </td>
+
+      <td class="px-4 py-4 text-neutral-400">
+        {{ member.employed }}
+      </td>
+
+      <td class="px-4 py-4">
+        <button class="text-blue-400">
+          Edit
+        </button>
+      </td>
+
+    </tr>
+
+  </tbody>
+
+</table>
+    <!-- Empty State -->
+    <div id="emptyState" class="hidden py-14 text-center">
+      <svg class="w-8 h-8 text-neutral-600 mx-auto mb-3" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/>
+      </svg>
+      <p class="text-neutral-500 text-sm">No members match your search</p>
+    </div>
+  </div>
+ 
+  <!-- Footer -->
+  <div class="flex items-center justify-between px-6 py-4 border-t border-neutral-800 flex-wrap gap-3">
+    <p id="pageInfo" class="text-neutral-500 text-xs"></p>
+    <div class="flex gap-2">
+      <button id="prevBtn" onclick="changePage(-1)"
+        class="border border-neutral-700 rounded-lg text-neutral-300 text-xs font-medium uppercase tracking-wide px-4 py-2 hover:border-neutral-500 hover:text-white transition-colors disabled:opacity-30 disabled:cursor-default">
+        Previous
+      </button>
+      <button id="nextBtn" onclick="changePage(1)"
+        class="border border-neutral-700 rounded-lg text-neutral-300 text-xs font-medium uppercase tracking-wide px-4 py-2 hover:border-neutral-500 hover:text-white transition-colors disabled:opacity-30 disabled:cursor-default">
+        Next
+      </button>
+    </div>
+  </div>
+ 
+</div>
+<!-- TABLE DIV END -->
+ 
+<script>
+const members = [
+  {name:"John Michael",  email:"john@creative-tim.com",    role:"Manager",     dept:"Organization", status:"online",  employed:"23/04/18", img:"https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-3.jpg"},
+  {name:"Alexa Liras",   email:"alexa@creative-tim.com",   role:"Programator", dept:"Developer",    status:"offline", employed:"23/04/18", img:"https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-2.jpg"},
+  {name:"Laurent Perrier",email:"laurent@creative-tim.com",role:"Executive",   dept:"Projects",     status:"offline", employed:"19/09/17", img:"https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-1.jpg"},
+  {name:"Michael Levi",  email:"michael@creative-tim.com", role:"Programator", dept:"Developer",    status:"online",  employed:"24/12/08", img:"https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-4.jpg"},
+  {name:"Richard Gran",  email:"richard@creative-tim.com", role:"Manager",     dept:"Executive",    status:"offline", employed:"04/10/21", img:"https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-5.jpg"},
+  {name:"Sarah Collins", email:"sarah@creative-tim.com",   role:"Designer",    dept:"Creative",     status:"online",  employed:"12/03/20", img:"https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-3.jpg"},
+  {name:"David Park",    email:"david@creative-tim.com",   role:"Engineer",    dept:"Backend",      status:"online",  employed:"07/08/19", img:"https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-2.jpg"},
+];
+ 
+const PAGE_SIZE = 5;
+let page = 1;
+let filtered = [...members];
+ 
+function renderTable(data, p) {
+  const body = document.getElementById('tableBody');
+  const empty = document.getElementById('emptyState');
+  if (!data.length) {
+    body.innerHTML = '';
+    empty.classList.remove('hidden');
+    document.getElementById('pageInfo').textContent = 'No results';
+    document.getElementById('prevBtn').disabled = true;
+    document.getElementById('nextBtn').disabled = true;
+    return;
+  }
+  empty.classList.add('hidden');
+  const totalPages = Math.max(1, Math.ceil(data.length / PAGE_SIZE));
+  const slice = data.slice((p - 1) * PAGE_SIZE, p * PAGE_SIZE);
+  document.getElementById('pageInfo').textContent = 'Page ' + p + ' of ' + totalPages;
+  document.getElementById('prevBtn').disabled = p <= 1;
+  document.getElementById('nextBtn').disabled = p >= totalPages;
+ 
+  body.innerHTML = slice.map(m => `
+    <tr class="border-b border-neutral-800/60 hover:bg-neutral-800/30 transition-colors">
+      <td class="px-6 py-4">
+        <div class="flex items-center gap-3">
+          <img src="${m.img}" alt="${m.name}" onerror="this.style.display='none'"
+            class="w-9 h-9 rounded-full object-cover border border-neutral-700 shrink-0"/>
+          <div>
+            <p class="text-sm font-medium text-neutral-200 leading-tight">${m.name}</p>
+            <p class="text-xs text-neutral-500 mt-0.5">${m.email}</p>
+          </div>
+        </div>
+      </td>
+      <td class="px-4 py-4">
+        <p class="text-sm font-medium text-neutral-300">${m.role}</p>
+        <p class="text-xs text-neutral-500 mt-0.5">${m.dept}</p>
+      </td>
+      <td class="px-4 py-4">
+        ${m.status === 'online'
+          ? `<span class="inline-flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-wide text-emerald-400 bg-emerald-400/10 border border-emerald-400/20 rounded-full px-2.5 py-1">
+               <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block"></span>Online
+             </span>`
+          : `<span class="inline-flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-wide text-neutral-500 bg-neutral-800 border border-neutral-700 rounded-full px-2.5 py-1">
+               <span class="w-1.5 h-1.5 rounded-full bg-neutral-600 inline-block"></span>Offline
+             </span>`
+        }
+      </td>
+      <td class="px-4 py-4">
+        <p class="text-sm text-neutral-500">${m.employed}</p>
+      </td>
+      <td class="px-4 py-4 text-right">
+        <button aria-label="Edit ${m.name}"
+          class="w-8 h-8 inline-flex items-center justify-center border border-neutral-700 rounded-lg text-neutral-500 hover:border-neutral-500 hover:text-neutral-200 transition-colors">
+          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z"/>
+          </svg>
+        </button>
+      </td>
+    </tr>
+  `).join('');
+}
+ 
+function filterTable() {
+  const q = document.getElementById('searchInput').value.toLowerCase().trim();
+  filtered = q ? members.filter(m =>
+    m.name.toLowerCase().includes(q) ||
+    m.email.toLowerCase().includes(q) ||
+    m.role.toLowerCase().includes(q) ||
+    m.dept.toLowerCase().includes(q) ||
+    m.status.toLowerCase().includes(q)
+  ) : [...members];
+  page = 1;
+  renderTable(filtered, page);
+}
+ 
+function showAll() {
+  document.getElementById('searchInput').value = '';
+  filtered = [...members];
+  page = 1;
+  renderTable(filtered, page);
+}
+ 
+function changePage(dir) {
+  const totalPages = Math.ceil(filtered.length / PAGE_SIZE);
+  page = Math.max(1, Math.min(totalPages, page + dir));
+  renderTable(filtered, page);
+}
+ 
+renderTable(filtered, page);
+</script>
+
+
+
+</div>
+
+<script>
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    menuToggle.addEventListener('click', () => {
+        if (mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.remove('hidden');
+            mobileMenu.classList.add('flex');
+        } else {
+            mobileMenu.classList.add('hidden');
+            mobileMenu.classList.remove('flex');
+        }
+    });
+</script>
