@@ -80,37 +80,44 @@
   </div>
 
   <!-- RIGHT SECTION -->
-  <div class="hidden md:flex items-center gap-4">
-    
-    <!-- USER PROFILE -->
+<button
+  (click)="openProfileModal()"
+  class="hidden md:flex items-center gap-4"
+>
+  <div
+    class="flex items-center gap-3 bg-black border border-neutral-700 hover:border-slate-600 px-3 py-2 rounded-full transition cursor-pointer"
+  >
+
+    <!-- AVATAR -->
+
     <div
-      class="flex items-center gap-3 bg-black border border-neutral-700 hover:border-slate-600 px-3 py-2 rounded-full transition cursor-pointer"
+      class="w-11 h-11 rounded-full bg-white flex items-center justify-center text-black font-bold shadow-lg shadow-blue-500/20"
     >
-      <!-- AVATAR -->
-      <div
-        class="w-11 h-11 rounded-full bg-white flex items-center justify-center text-black font-bold shadow-lg shadow-blue-500/20"
-      >
-        J
-      </div>
+      J
+    </div>
 
-      <!-- USER INFO -->
-      <div class="hidden lg:block">
-        <h2 class="text-sm font-semibold text-white">
-          Jegan
-        </h2>
+    <!-- USER INFO -->
 
-        <div class="flex items-center gap-2">
-          <p class="text-xs text-slate-400">
-            Administrator
-          </p>
+    <div class="hidden lg:block">
 
-          <span
-            class="w-2 h-2 rounded-full bg-green-400 animate-pulse"
-          ></span>
-        </div>
+      <h2 class="text-sm font-semibold text-white">
+        Jegan
+      </h2>
+
+      <div class="flex items-center gap-2">
+
+        <p class="text-xs text-slate-400">
+          Administrator
+        </p>
+
+        <span
+          class="w-2 h-2 rounded-full bg-green-400 animate-pulse"
+        ></span>
+
       </div>
     </div>
   </div>
+</button>
 
   <!-- MOBILE MENU BUTTON -->
   <button id="menuToggle" class="md:hidden text-white">
@@ -157,6 +164,7 @@
     </button>
   </div>
 </nav>
+
 <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 w-full mt-8 px-4">
 
     <!-- CARD 1 -->
@@ -319,8 +327,10 @@
           View all
         </button> -->
         <!-- Add Member -->
+         
         <button
-          class="flex items-center justify-center gap-2 bg-white text-neutral-900 text-xs font-medium tracking-wide uppercase rounded-lg px-4 py-2 hover:bg-neutral-100 transition-colors whitespace-nowrap">
+         (click)="openAddMemberModal()"
+          class=" flex items-center justify-center gap-2 bg-white text-neutral-900 text-xs font-medium tracking-wide uppercase rounded-lg px-4 py-2 hover:bg-neutral-100 transition-colors whitespace-nowrap">
           <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
             <path d="M6.25 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM3.25 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM19.75 7.5a.75.75 0 00-1.5 0v2.25H16a.75.75 0 000 1.5h2.25v2.25a.75.75 0 001.5 0v-2.25H22a.75.75 0 000-1.5h-2.25V7.5z"/>
           </svg>
@@ -461,126 +471,202 @@
   </div>
  
 </div>
-<!-- TABLE DIV END -->
- 
-<script>
-const members = [
-  {name:"John Michael",  email:"john@creative-tim.com",    role:"Manager",     dept:"Organization", status:"online",  employed:"23/04/18", img:"https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-3.jpg"},
-  {name:"Alexa Liras",   email:"alexa@creative-tim.com",   role:"Programator", dept:"Developer",    status:"offline", employed:"23/04/18", img:"https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-2.jpg"},
-  {name:"Laurent Perrier",email:"laurent@creative-tim.com",role:"Executive",   dept:"Projects",     status:"offline", employed:"19/09/17", img:"https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-1.jpg"},
-  {name:"Michael Levi",  email:"michael@creative-tim.com", role:"Programator", dept:"Developer",    status:"online",  employed:"24/12/08", img:"https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-4.jpg"},
-  {name:"Richard Gran",  email:"richard@creative-tim.com", role:"Manager",     dept:"Executive",    status:"offline", employed:"04/10/21", img:"https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-5.jpg"},
-  {name:"Sarah Collins", email:"sarah@creative-tim.com",   role:"Designer",    dept:"Creative",     status:"online",  employed:"12/03/20", img:"https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-3.jpg"},
-  {name:"David Park",    email:"david@creative-tim.com",   role:"Engineer",    dept:"Backend",      status:"online",  employed:"07/08/19", img:"https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-2.jpg"},
-];
- 
-const PAGE_SIZE = 5;
-let page = 1;
-let filtered = [...members];
- 
-function renderTable(data, p) {
-  const body = document.getElementById('tableBody');
-  const empty = document.getElementById('emptyState');
-  if (!data.length) {
-    body.innerHTML = '';
-    empty.classList.remove('hidden');
-    document.getElementById('pageInfo').textContent = 'No results';
-    document.getElementById('prevBtn').disabled = true;
-    document.getElementById('nextBtn').disabled = true;
-    return;
-  }
-  empty.classList.add('hidden');
-  const totalPages = Math.max(1, Math.ceil(data.length / PAGE_SIZE));
-  const slice = data.slice((p - 1) * PAGE_SIZE, p * PAGE_SIZE);
-  document.getElementById('pageInfo').textContent = 'Page ' + p + ' of ' + totalPages;
-  document.getElementById('prevBtn').disabled = p <= 1;
-  document.getElementById('nextBtn').disabled = p >= totalPages;
- 
-  body.innerHTML = slice.map(m => `
-    <tr class="border-b border-neutral-800/60 hover:bg-neutral-800/30 transition-colors">
-      <td class="px-6 py-4">
-        <div class="flex items-center gap-3">
-          <img src="${m.img}" alt="${m.name}" onerror="this.style.display='none'"
-            class="w-9 h-9 rounded-full object-cover border border-neutral-700 shrink-0"/>
-          <div>
-            <p class="text-sm font-medium text-neutral-200 leading-tight">${m.name}</p>
-            <p class="text-xs text-neutral-500 mt-0.5">${m.email}</p>
-          </div>
-        </div>
-      </td>
-      <td class="px-4 py-4">
-        <p class="text-sm font-medium text-neutral-300">${m.role}</p>
-        <p class="text-xs text-neutral-500 mt-0.5">${m.dept}</p>
-      </td>
-      <td class="px-4 py-4">
-        ${m.status === 'online'
-          ? `<span class="inline-flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-wide text-emerald-400 bg-emerald-400/10 border border-emerald-400/20 rounded-full px-2.5 py-1">
-               <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block"></span>Online
-             </span>`
-          : `<span class="inline-flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-wide text-neutral-500 bg-neutral-800 border border-neutral-700 rounded-full px-2.5 py-1">
-               <span class="w-1.5 h-1.5 rounded-full bg-neutral-600 inline-block"></span>Offline
-             </span>`
-        }
-      </td>
-      <td class="px-4 py-4">
-        <p class="text-sm text-neutral-500">${m.employed}</p>
-      </td>
-      <td class="px-4 py-4 text-right">
-        <button aria-label="Edit ${m.name}"
-          class="w-8 h-8 inline-flex items-center justify-center border border-neutral-700 rounded-lg text-neutral-500 hover:border-neutral-500 hover:text-neutral-200 transition-colors">
-          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z"/>
-          </svg>
+@if (addMemberModal) {
+
+<!-- ADD MEMBER MODAL -->
+
+<div
+  class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm px-4"
+>
+
+  <!-- BACKDROP -->
+
+  <div
+    class="absolute inset-0"
+    (click)="closeAddMemberModal()"
+  ></div>
+
+  <!-- MODAL -->
+
+  <div
+    class="relative z-10 w-full max-w-md rounded-3xl bg-black border border-neutral-800 shadow-2xl overflow-hidden"
+  >
+
+    <!-- HEADER -->
+
+    <div class="border-b border-neutral-800 px-6 py-5">
+
+      <h2 class="text-2xl font-bold text-white">
+        Add Member
+      </h2>
+
+      <p class="text-sm text-slate-400 mt-1">
+        Create a new team member profile
+      </p>
+
+    </div>
+
+    <!-- FORM -->
+
+    <div class="p-6 space-y-5">
+
+      <!-- NAME -->
+
+      <div>
+
+        <label class="text-sm text-slate-300 mb-2 block">
+          Name
+        </label>
+
+        <input
+          type="text"
+          [(ngModel)]="memberForm.name"
+          placeholder="Enter member name"
+          class="w-full bg-neutral-900 border border-neutral-700 focus:border-white outline-none text-white rounded-xl px-4 py-3 transition"
+        />
+
+      </div>
+
+      <!-- EMAIL -->
+
+      <div>
+
+        <label class="text-sm text-slate-300 mb-2 block">
+          Email
+        </label>
+
+        <input
+          type="email"
+          [(ngModel)]="memberForm.email"
+          placeholder="Enter member email"
+          class="w-full bg-neutral-900 border border-neutral-700 focus:border-white outline-none text-white rounded-xl px-4 py-3 transition"
+        />
+
+      </div>
+
+      <!-- DESIGNATION -->
+
+      <div>
+
+        <label class="text-sm text-slate-300 mb-2 block">
+          Designation
+        </label>
+
+        <input
+          type="text"
+          [(ngModel)]="memberForm.designation"
+          placeholder="Enter designation"
+          class="w-full bg-neutral-900 border border-neutral-700 focus:border-white outline-none text-white rounded-xl px-4 py-3 transition"
+        />
+
+      </div>
+
+      <!-- BUTTONS -->
+
+      <div class="flex items-center justify-end gap-4 pt-4">
+
+        <!-- CANCEL -->
+
+        <button
+          (click)="closeAddMemberModal()"
+          class="px-5 py-3 rounded-xl border border-neutral-700 text-white hover:bg-neutral-900 transition"
+        >
+          Cancel
         </button>
-      </td>
-    </tr>
-  `).join('');
-}
- 
-function filterTable() {
-  const q = document.getElementById('searchInput').value.toLowerCase().trim();
-  filtered = q ? members.filter(m =>
-    m.name.toLowerCase().includes(q) ||
-    m.email.toLowerCase().includes(q) ||
-    m.role.toLowerCase().includes(q) ||
-    m.dept.toLowerCase().includes(q) ||
-    m.status.toLowerCase().includes(q)
-  ) : [...members];
-  page = 1;
-  renderTable(filtered, page);
-}
- 
-function showAll() {
-  document.getElementById('searchInput').value = '';
-  filtered = [...members];
-  page = 1;
-  renderTable(filtered, page);
-}
- 
-function changePage(dir) {
-  const totalPages = Math.ceil(filtered.length / PAGE_SIZE);
-  page = Math.max(1, Math.min(totalPages, page + dir));
-  renderTable(filtered, page);
-}
- 
-renderTable(filtered, page);
-</script>
 
+        <!-- CREATE -->
 
+        <button
+          (click)="createMember()"
+          class="px-5 py-3 rounded-xl bg-white text-black hover:bg-slate-200 font-semibold transition"
+        >
+          Create
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
 
 </div>
 
-<script>
-    const menuToggle = document.getElementById('menuToggle');
-    const mobileMenu = document.getElementById('mobileMenu');
-
-    menuToggle.addEventListener('click', () => {
-        if (mobileMenu.classList.contains('hidden')) {
-            mobileMenu.classList.remove('hidden');
-            mobileMenu.classList.add('flex');
-        } else {
-            mobileMenu.classList.add('hidden');
-            mobileMenu.classList.remove('flex');
-        }
-    });
-</script>
+}
+<!-- PROFILE MODAL -->
+<div
+  *ngIf="isProfileOpen"
+  class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm px-4"
+>
+  <!-- BACKDROP -->
+  <div
+    class="absolute inset-0"
+    (click)="closeProfileModal()"
+  ></div>
+  <!-- PROFILE CARD -->
+  <div
+    (mousemove)="handleMouseMove($event)"
+    (mouseenter)="visible = true"
+    (mouseleave)="visible = false"
+    class="relative w-80 h-[30rem] rounded-2xl p-px bg-gray-900 overflow-hidden shadow-2xl"
+  >
+    <!-- GLOW -->
+    <div
+      class="pointer-events-none blur-3xl rounded-full bg-white size-60 absolute z-0 transition-opacity duration-500"
+      [class.opacity-100]="visible"
+      [class.opacity-0]="!visible"
+      [style.top.px]="position.y - 120"
+      [style.left.px]="position.x - 120"
+    ></div>
+    <!-- CARD CONTENT -->
+    <div
+      class="relative z-10 bg-black border border-neutral-800 h-full w-full rounded-[15px] flex flex-col items-center justify-center text-center p-6"
+    >
+      <!-- CLOSE -->
+      <button
+        (click)="closeProfileModal()"
+        class="absolute top-4 right-4 text-slate-400 hover:text-white transition text-xl"
+      >
+        ×
+      </button>
+      <!-- PROFILE IMAGE -->
+      <img
+        src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=200"
+        alt="profile"
+        class="w-28 h-28 rounded-full object-cover shadow-xl border-4 border-white/10"
+      />
+      <!-- NAME -->
+      <h2 class="text-2xl font-bold text-white mt-5">
+        Jegan
+      </h2>
+      <!-- ROLE -->
+      <p class="text-white text-sm mt-1 font-medium">
+        Human Resource
+      </p>
+      <!-- DESC -->
+      <p class="text-slate-400 text-sm mt-5 leading-6 px-4">
+        Email:jegan@mploychek.com
+        Contact: +91 7299645549
+        Working since 2018
+      </p>
+<button
+  (click)="logout()"
+  class="mt-8 flex items-center gap-3 bg-red-500/10 hover:bg-red-500/20 border border-red-500/20 hover:border-red-500/40 text-red-400 hover:text-red-300 px-5 py-3 rounded-xl transition duration-300 group"
+>
+<div
+    class="w-10 h-10 rounded-full bg-red-500/10 flex items-center justify-center group-hover:rotate-12 transition duration-300"
+  >
+    <i class="ri-logout-circle-r-line text-2xl"></i>
+  </div>
+  <!-- TEXT -->
+  <div class="text-left">
+    <h3 class="text-sm font-semibold">
+      Logout
+    </h3>
+    <p class="text-xs text-red-300/70">
+      End current session
+    </p>
+  </div>
+</button>
+</div>
+  </div>
+</div>
