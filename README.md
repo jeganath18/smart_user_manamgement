@@ -75,41 +75,39 @@ The application uses JWT-based authentication.
 # 📸 Screenshots
 
 ## Dashboard
-_Add screenshot here_
 
-```md
 ![Dashboard](./screenshots/image.png)
-```
+
 
 ## Profile Modal
 
-```md
+
 ![Dashboard](./screenshots/image%20copy.png)
-```
+
 
 
 ## Add User Modal
 _Add screenshot here_
 
-```md
+
 ![Add User](./screenshots/image%20copy%202.png)
-```
+
 
 ## Search Table
 _Add screenshot here_
 
-```md
+
 ![Search Table](./screenshots/image%20copy%203.png)
-```
+
 
 ---
 
 ## Edit User
 _Add screenshot here_
 
-```md
+
 ![Edit User](./screenshots/image%20copy%204.png)
-```
+
 
 ---
 
@@ -117,9 +115,9 @@ _Add screenshot here_
 ## Delete User
 _Add screenshot here_
 
-```md
+
 ![Delete Table](./screenshots/image%20copy%205.png)
-```
+
 
 ---
 
