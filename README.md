@@ -1,59 +1,236 @@
-# SmartUserPortal
+# Smart Member Management System
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.12.
+A modern full-stack Member Management application built using Angular, Node.js, Express.js, MongoDB, JWT Authentication, and Tailwind CSS.
 
-## Development server
+The application allows administrators to securely manage users through a clean and responsive dashboard interface.
 
-To start a local development server, run:
+---
+
+# 🚀 Features
+
+- JWT Authentication
+- Secure Admin Login
+- Add User
+- Edit User
+- Delete User
+- Protected API Routes
+- Responsive Dashboard UI
+- Search Users
+- MongoDB Database Integration
+- Modern TailwindCSS Design
+- REST API Architecture
+
+---
+
+# 🛠️ Tech Stack
+
+## Frontend
+- Angular 17
+- TypeScript
+- Tailwind CSS
+- Angular HTTP Client
+- RxJS
+
+## Backend
+- Node.js
+- Express.js
+- MongoDB Atlas
+- Mongoose
+- JWT Authentication
+- bcryptjs
+
+---
+
+# 📂 Project Structure
 
 ```bash
+project-root/
+│
+├── 
+├──  src/app/features/*
+├──  angular.json
+│
+├── backend/
+│   ├── server.js
+│   └── package.json
+│   
+└── README.md
+```
+
+---
+
+# 🔐 Authentication
+
+The application uses JWT-based authentication.
+
+### Flow
+1. Admin logs in using email and password
+2. Backend validates credentials
+3. JWT token is generated
+4. Token stored in localStorage
+5. Protected routes accessed using Authorization headers
+
+---
+
+# 📸 Screenshots
+
+## Dashboard
+_Add screenshot here_
+
+```md
+![Dashboard](./screenshots/image.png)
+```
+
+## Profile Modal
+
+```md
+![Dashboard](./screenshots/image%20copy.png)
+```
+
+
+## Add User Modal
+_Add screenshot here_
+
+```md
+![Add User](./screenshots/image%20copy%202.png)
+```
+
+## Search Table
+_Add screenshot here_
+
+```md
+![Search Table](./screenshots/image%20copy%203.png)
+```
+
+---
+
+## Edit User
+_Add screenshot here_
+
+```md
+![Edit User](./screenshots/image%20copy%204.png)
+```
+
+---
+
+
+## Delete User
+_Add screenshot here_
+
+```md
+![Delete Table](./screenshots/image%20copy%205.png)
+```
+
+---
+
+
+# ⚙️ Installation
+
+## Clone Repository
+
+```bash
+git clone https://github.com/jeganath18/smart_user_manamgement.git
+```
+
+---
+
+# Frontend Setup
+
+```bash
+
+npm install
+
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Frontend runs on:
 
 ```bash
-ng generate component component-name
+http://localhost:4200
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+---
+
+# Backend Setup
 
 ```bash
-ng generate --help
+cd backend
+
+npm install
+
+node server.js
 ```
 
-## Building
-
-To build the project run:
+Backend runs on:
 
 ```bash
-ng build
+http://localhost:3000
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+---
 
-## Running unit tests
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+# 📡 API Endpoints
 
-```bash
-ng test
-```
+## Authentication
 
-## Running end-to-end tests
+| Method | Endpoint | Description |
+|---|---|---|
+| POST | `/login` | Admin Login |
+| POST | `/create-user` | Create Admin |
 
-For end-to-end (e2e) testing, run:
+---
 
-```bash
-ng e2e
-```
+## Users
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/members` | Get All Users |
+| POST | `/members` | Add User |
+| PUT | `/members/:id` | Edit User |
+| DELETE | `/members/:id` | Delete User |
 
-## Additional Resources
+---
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+# 🎨 UI Features
+
+- Responsive Design
+- Modern Dark Theme
+- TailwindCSS Styling
+- Interactive User Table
+- Modal-based CRUD Operations
+
+---
+
+# 🔒 Security Features
+
+- Password Hashing using bcrypt
+- JWT Token Verification
+- Protected APIs
+- Environment Variable Protection
+- MongoDB Secure Connection
+
+---
+
+# 📈 Future Improvements
+
+- Role-based Access Control
+- Pagination
+- User Activity Logs
+- Export to Excel/PDF
+- Email Notifications
+- Profile Management
+
+---
+
+# 👨‍💻 Author
+
+### Jeganath B
+
+Full Stack Developer passionate about building scalable and modern web applications.
+
+---
+
+# ⭐ Conclusion
+
+This project demonstrates a complete full-stack CRUD application with authentication, authorization, cloud database integration, responsive frontend architecture, and secure backend API development using Angular and Node.js.

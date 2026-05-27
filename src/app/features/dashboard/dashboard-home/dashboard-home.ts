@@ -1,68 +1,168 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit, PLATFORM_ID, inject, ChangeDetectorRef } from '@angular/core';
+import { isPlatformBrowser, CommonModule, DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-dashboard-home',
   templateUrl: './dashboard-home.html',
-  styleUrls: ['./dashboard-home.scss'],
   standalone: true,
-  imports: [CommonModule,FormsModule],
+  imports: [CommonModule, FormsModule, DatePipe],
 })
-export class DashboardHome {
+export class DashboardHome implements OnInit {
 
-  members = [
-    {
-      name: "John Michael",
-      email: "john@creative-tim.com",
-      role: "Manager",
-      dept: "Organization",
-      status: "online",
-      employed: "23/04/18",
-      img: "https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-3.jpg"
-    },
-    {
-      name: "Alexa Liras",
-      email: "alexa@creative-tim.com",
-      role: "Programator",
-      dept: "Developer",
-      status: "offline",
-      employed: "23/04/18",
-      img: "https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-2.jpg"
-    }
-  ];
+  private http = inject(HttpClient);
+  private platformId = inject(PLATFORM_ID);
+  private cdr = inject(ChangeDetectorRef);
 
-  // MODAL STATES
+  readonly API = 'https://sm-backend-pi.vercel.app/members';
 
+  members: any[] = [];
+  isCreatingMember = false;
+  editMode = false;
+  selectedMember: any = null;
+  deleteModal = false;
+  memberToDelete: any = null;
+  isDeleting = false;
   isProfileOpen = false;
-
   visible = false;
+  position = { x: 0, y: 0 };
+  addMemberModal = false;
+  memberForm = { name: '', email: '', designation: '' };
+  searchTerm = '';
 
-  position = {
-    x: 0,
-    y: 0
-  };
+  ngOnInit() {
 
-  // OPEN MODAL
+    if (isPlatformBrowser(this.platformId)) {
 
-  openProfileModal() {
-    this.isProfileOpen = true;
+      setTimeout(() => {
+
+        this.getMembers();
+
+      }, 0);
+
+    }
+
   }
 
-  // CLOSE MODAL
-
-  closeProfileModal() {
-    this.isProfileOpen = false;
+  getHeaders() {
+    return new HttpHeaders({
+      'Authorization': localStorage.getItem('token') || ''
+    });
   }
 
-  // GLOW EFFECT
+  get filteredMembers() {
+
+    if (!this.searchTerm.trim()) {
+      return this.members;
+    }
+
+    return this.members.filter(member =>
+      member.name.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+      member.email.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+      member.designation.toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
+  }
+
+  getMembers() {
+    this.http.get<any[]>(this.API, { headers: this.getHeaders() })
+      .subscribe(data => {
+        this.members = data || [];
+      });
+    this.cdr.detectChanges();
+  }
+
+  createMember() {
+    if (this.isCreatingMember) return;
+    this.isCreatingMember = true;
+    this.addMemberModal = false;
+    const formSnapshot = { ...this.memberForm };
+    const memberSnapshot = this.selectedMember;
+    const isEdit = this.editMode && memberSnapshot;
+
+    const url = isEdit ? `${this.API}/${memberSnapshot._id}` : this.API;
+    const request = isEdit
+      ? this.http.put<any>(url, formSnapshot, { headers: this.getHeaders() })
+      : this.http.post<any>(url, formSnapshot, { headers: this.getHeaders() });
+
+    request.subscribe({
+      next: (data) => {
+        if (isEdit) {
+          this.members = this.members.map(m =>
+            m._id === memberSnapshot._id ? data.member : m
+          );
+        } else {
+          this.members = [data.member, ...this.members];
+        }
+        this.memberForm = { name: '', email: '', designation: '' };
+        this.editMode = false;
+        this.selectedMember = null;
+        this.isCreatingMember = false;
+      },
+      error: (err) => {
+        console.log(err);
+        this.isCreatingMember = false;
+      }
+    });
+  }
+
+  deleteMember() {
+    if (this.isDeleting || !this.memberToDelete) return;
+    this.isDeleting = true;
+    this.isDeleting = false;
+    this.deleteModal = false;
+
+    const idToDelete = this.memberToDelete._id;
+
+    this.http.delete(`${this.API}/${idToDelete}`, { headers: this.getHeaders() })
+      .subscribe({
+        next: () => {
+          this.members = this.members.filter(m => m._id !== idToDelete);
+          this.memberToDelete = null;
+
+        },
+        error: (err) => {
+          console.log(err);
+          this.isDeleting = false;
+        }
+      });
+  }
+
+  openEditMemberModal(member: any) {
+    this.editMode = true;
+    this.selectedMember = member;
+    this.memberForm = {
+      name: member.name,
+      email: member.email,
+      designation: member.designation
+    };
+    this.addMemberModal = true;
+  }
+
+  closeAddMemberModal() {
+    this.addMemberModal = false;
+    this.editMode = false;
+    this.selectedMember = null;
+    this.memberForm = { name: '', email: '', designation: '' };
+  }
+
+  openDeleteModal(member: any) {
+    this.memberToDelete = member;
+    this.deleteModal = true;
+  }
+
+  closeDeleteModal() {
+    this.deleteModal = false;
+    this.memberToDelete = null;
+  }
+
+  openProfileModal() { this.isProfileOpen = true; }
+  closeProfileModal() { this.isProfileOpen = false; }
+  openAddMemberModal() { this.addMemberModal = true; }
 
   handleMouseMove(event: MouseEvent) {
-
     const target = event.currentTarget as HTMLElement;
-
     const bounds = target.getBoundingClientRect();
-
     this.position = {
       x: event.clientX - bounds.left,
       y: event.clientY - bounds.top
@@ -70,38 +170,7 @@ export class DashboardHome {
   }
 
   logout() {
-
-  localStorage.clear();
-
-  window.location.href = '/login';
-
-}
-
-addMemberModal = false;
-
-memberForm = {
-  name: '',
-  email: '',
-  designation: ''
-};
-
-openAddMemberModal() {
-  this.addMemberModal = true;
-  console.log("hii");
-}
-
-closeAddMemberModal() {
-  this.addMemberModal = false;
-}
-
-createMember() {
-
-  console.log(this.memberForm);
-
-  // API CALL HERE
-
-  this.closeAddMemberModal();
-
-}
-
+    localStorage.clear();
+    window.location.href = '/login';
+  }
 }
